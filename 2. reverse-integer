@@ -1,0 +1,28 @@
+https://leetcode.com/problems/reverse-integer/
+#include <stdio.h>
+#include <stdlib.h>
+
+class Solution {
+public:
+    int reverse(int x) {
+        auto temp = (x);
+        long long output = 0; // long long 
+        
+        while(temp != 0){
+            int remainder = temp % 10; // remainder 음수도 가능!
+            temp = temp/10;            
+
+            if( (output * 10 > pow(2,31)-1) || (output * 10 < -pow(2,31)) ){
+                output = 0;
+                break;
+            }           
+            
+            output *= 10;
+            output += remainder;  
+            std::cout<<(output)<<std::endl;
+        }
+        //if(x < 0) output *= -1;
+        
+        return output;
+    }
+};
