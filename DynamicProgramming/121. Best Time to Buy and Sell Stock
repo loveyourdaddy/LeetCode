@@ -1,0 +1,16 @@
+//brute force 
+class Solution {
+    int maxProfit(vector<int>& prices) {
+        int maxProfit = 0, size = prices.size(); 
+        for(int i=0; i<size; i++){
+            for(int j=i+1; j<size; j++){
+                int profit = prices[j] - prices[i];
+                if(profit > maxProfit){
+                    maxProfit = profit;
+                    std::cout<< "buy: " << prices[i] <<" sell: " << prices[j] <<std::endl; 
+                }    
+            }
+        }
+        return maxProfit; 
+    }
+};
