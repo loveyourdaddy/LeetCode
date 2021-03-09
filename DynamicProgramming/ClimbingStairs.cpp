@@ -1,4 +1,5 @@
 //bottom up 방식
+//brute force 
 class Solution {
 public:
     int climbStairs(int n) {
@@ -10,6 +11,6 @@ public:
         else if(i > n)
             return 0;
         else // 도달하지 못한 경우 
-            return climb_stairs(i-1,n) + climb_stairs(i-2,n);
+            return climb_stairs(i+1,n) + climb_stairs(i+2,n);
     }
 };
