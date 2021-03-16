@@ -36,3 +36,67 @@ public:
         return output;
     }
 };
+
+
+// 
+#include "iostream"
+#include <vector>
+#include<algorithm>
+using namespace std;
+class Solution {
+public:
+    vector<vector<int>> threeSum(vector<int>& nums) {
+        vector<vector<int>> output;
+        vector<int> ans;
+        if (nums.size() < 3) return output;
+        sort(nums.begin(), nums.end());
+
+        int len = nums.size();
+        int idx = 0;
+        while (nums[idx] == 0 )
+        {
+            idx++;
+            if (idx >= len)
+                break;
+        }
+        if (idx >= 3) {
+            ans = { 0,0,0 };
+            output.push_back(ans);
+            return output;
+        }
+        //중복이 없는 배열을 만들기 
+
+        for (int i = 0; i < nums.size(); i++)
+        {
+            if (i > 0 && nums[i] == nums[i - 1])
+                continue;
+            int left = i + 1;
+            int right = nums.size() - 1;
+            while (left < right)
+            {                
+                int sum = nums[i] + nums[left] + nums[right];
+                if (sum > 0) right--;
+                else if (sum < 0) left++;
+                else 
+                {
+					ans = { nums[i], nums[left], nums[right] };
+					output.push_back(ans);
+                    left++;
+
+                    while ( left < right && nums[left - 1] == nums[left] )
+                    {
+                        left++;
+                    }
+				}
+            }
+        }
+        return output;
+    }
+};
+int main() {
+    Solution sol;
+    vector<int> input = {-4,-1,-4,0,2,-2,-4,-3,2,-3,2,3,3,-4};
+    vector<vector<int>> result = sol.threeSum(input);
+
+	return 0;
+}
