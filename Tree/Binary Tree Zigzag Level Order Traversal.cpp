@@ -36,9 +36,9 @@ public:
 			pair<TreeNode*, int> cur = que.front();
 			que.pop();
 						
-			if (cur.first->right != nullptr)
-				que.push(make_pair(cur.first->left, cur.second + 1));
 			if (cur.first->left != nullptr)
+				que.push(make_pair(cur.first->left, cur.second + 1));
+			if (cur.first->right != nullptr)
 				que.push(make_pair(cur.first->right, cur.second + 1));
 
 			//curLevel == pair의 level 이라면, ans의 해당 레벨에 넣어줌 (right 인 경우)
@@ -54,7 +54,7 @@ public:
 		}
 
 		//index가 홀수라면 reverse 
-		int index = 0; 
+		int index = 1; 
 		while (index < ans.size())
 		{
 			reverse(ans[index].begin(), ans[index].end());
@@ -66,7 +66,8 @@ public:
 
 int main() {
     Solution sol;
-	TreeNode tree1(15), tree2(7), tree3(20, &tree1, &tree2), tree4(9), tree5(3, &tree4, &tree3);
+	/*TreeNode tree1(15), tree2(7), tree3(20, &tree1, &tree2), tree4(9), tree5(3, &tree4, &tree3);*/
+	TreeNode tree4(2), tree5(1, &tree4, nullptr);
     	
     vector<vector<int>> ans = sol.zigzagLevelOrder(&tree5);
 
