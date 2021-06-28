@@ -1,3 +1,5 @@
+# Runtime: 24 ms (60%)
+# Memory Usage: 23.8 MB (93%)
 #ifndef LEETCODE
 #define LEETCODE
 
@@ -20,17 +22,49 @@ public:
         vector<int> ans;
         int len = nums.size();
         ans.resize(len);
-        fill(ans.begin(), ans.end(), 1);
+        
+        //except for zero
+        vector<int> zero_ans;
         for (int i = 0; i < len; i++)
         {
-            for (int j = 0; j < len; j++)
+            if(nums[i] == 0)
+                zero_ans.push_back(i);
+        }
+
+        // 1. 1개 일때 
+        if (zero_ans.size() == 1)
+        {
+            //Get total Multiplication
+            int totalMult = 1;
+            for (int i = 0; i < len; i++)
             {
-                if (i == j) // is not i
-                {
+                if (i == zero_ans[0]) {                    
                     continue;
-                }
-                ans[i] *= nums[j];
-            }            
+                }                    
+                totalMult *= nums[i];
+            }
+            fill(ans.begin(), ans.end(), 0);
+            ans[zero_ans[0]] = totalMult;
+            return ans;
+        }
+
+        //2. 2개 이상일떄
+        if (zero_ans.size() > 1)
+        {
+            fill(ans.begin(), ans.end(), 0);
+            return ans;
+        }
+
+        // Get total multiplication 
+        int totalMult = 1;
+        for (int i = 0; i < len; i++)
+        {
+            totalMult *= nums[i];
+        }
+        
+        for (int i = 0; i < len; i++)
+        {
+            ans[i] = totalMult / nums[i];
         }
         
         return ans;
@@ -46,3 +80,5 @@ int main() {
 }
 
 #endif //LEETCODE
+
+//python 
