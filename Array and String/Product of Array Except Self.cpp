@@ -1,5 +1,5 @@
-# Runtime: 24 ms (60%)
-# Memory Usage: 23.8 MB (93%)
+// Runtime: 24 ms (60%)
+// Memory Usage: 23.8 MB (93%)
 #ifndef LEETCODE
 #define LEETCODE
 
@@ -82,3 +82,32 @@ int main() {
 #endif //LEETCODE
 
 //python 
+// Runtime: 252 ms
+// Memory Usage: 22.5 MB
+from typing import List 
+class Solution:
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        front = []
+        reverse = []
+
+        tmp = 1
+        length = len(nums)
+        for x in range(0, length):
+            front.append(tmp)
+            tmp *= nums[x]
+        
+        tmp = 1
+        for x in reversed(range(0, length)):
+            reverse.append(tmp)
+            tmp *= nums[x]
+
+        ans = []
+        for x in range(0, length):
+            ans.append(front[x] * reverse[length - x - 1])
+
+        return ans;
+        
+sol = Solution()
+nums = [1,2,3,4]
+ans = sol.productExceptSelf(nums)
+print(ans)
