@@ -13,6 +13,7 @@
 #include <math.h>
 using namespace std;
 
+// O(n^4)
 class Solution {
 public:
     int fourSumCount(vector<int>& nums1, vector<int>& nums2, vector<int>& nums3, vector<int>& nums4) {
@@ -51,3 +52,36 @@ int main() {
 }
 
 #endif //LEETCODE
+
+// O(n^2)
+class Solution {
+public:
+    int fourSumCount(vector<int>& nums1, vector<int>& nums2, vector<int>& nums3, vector<int>& nums4) {
+        int ans = 0;
+        map<int, int> m; // 합한 값, 등장횟수
+
+        for (auto a : nums1)
+        {
+            for (auto b : nums2)
+            {
+                m[a + b]++;
+            }
+        }
+
+        // it: map iterator
+		for (auto c : nums3)
+        {
+            for (auto d : nums4)
+            {
+                auto it = m.find(-1 * (c + d));
+                if (it != m.end())
+                {
+                    ans += it->second;
+                }
+            }
+        }
+
+        return ans;
+    }
+};
+
