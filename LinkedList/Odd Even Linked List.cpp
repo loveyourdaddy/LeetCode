@@ -73,3 +73,66 @@ int main() {
 
     return 0; 
 }
+
+
+#ifndef LEETCODE
+#define LEETCODE
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <vector>
+#include <string>
+#include <iostream>
+#include <algorithm>
+#include <queue>
+#include <unordered_map>
+#include <map>
+#include <math.h>
+#include <deque>
+using namespace std;
+
+struct ListNode {
+	int val;
+	ListNode* next;
+	ListNode() : val(0), next(nullptr) {}
+	ListNode(int x) : val(x), next(nullptr) {}
+	ListNode(int x, ListNode* next) : val(x), next(next) {}
+};
+
+class Solution {
+public:
+    ListNode* oddEvenList(ListNode* head) {
+		if (head == NULL)
+			return head;
+
+		// 두개 노드 선언
+		ListNode* odd = head;
+		ListNode* even = head->next;
+		ListNode* evenHead = head->next;
+
+		while (even != NULL && even->next != NULL)
+		{
+			odd->next = odd->next->next;
+			even->next = even->next->next;
+
+			odd = odd->next;
+			even = even->next;
+		}
+		odd->next = evenHead;
+		return head;
+    }
+};
+
+int main() {
+    Solution sol;
+	ListNode a(5);
+	ListNode b(4, &a);
+	ListNode c(3, &b);
+	ListNode d(2, &c);
+	ListNode e(1, &d);
+
+    sol.oddEvenList(&e);
+    return 0; 
+}
+
+#endif //LETCODE
