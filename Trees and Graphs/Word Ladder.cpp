@@ -1,3 +1,7 @@
+// remeber: 
+// queue: erase
+// set: find(못찾으면 end 반환)
+// string: compare(다르면 1, 같으면 0)
 #ifndef LEETCODE
 #define LEETCODE
 
@@ -77,3 +81,4 @@ int main() {
 }
 
 #endif //LETCODE
+
