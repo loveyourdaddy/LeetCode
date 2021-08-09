@@ -5,7 +5,7 @@ public:
     int maxPathSum(TreeNode* root) {
         find(root);
 		return maxVal;
-    } 
+    }  
 
     int find(TreeNode* node) {
         if (node == nullptr)
