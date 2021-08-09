@@ -16,7 +16,7 @@ public:
         }
 
         vector<int> visited; visited.resize(numCourses);
-        for (int i = 0; i < numCourses; i++)
+        for (int i = 0; i < numCourses; i++) 
         {
             if (isVisited(i, visited))
                 return false;            
@@ -29,13 +29,13 @@ public:
         if (visited[i] == 2)
             return false;
 		if (visited[i] == 1)
-			return true;
+            return true;
 		visited[i] = 1;
 
 		for (auto a : graph[i])
 		{ 
 			if (isVisited(a, visited))
-				return true;
+                return true;
         }
         
         // 모든 방문이 끝났다면 더이상 체크하지 않음으로 표시 
