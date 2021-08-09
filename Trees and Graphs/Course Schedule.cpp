@@ -33,7 +33,7 @@ public:
 		visited[i] = 1;
 
 		for (auto a : graph[i])
-		{
+		{ 
 			if (isVisited(a, visited))
 				return true;
         }
