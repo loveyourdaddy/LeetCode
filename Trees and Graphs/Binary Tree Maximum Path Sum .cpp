@@ -9,7 +9,7 @@ public:
 
     int find(TreeNode* node) {
         if (node == nullptr)
-            return 0;
+            return 0; 
         int leftSum = max(find(node->left), 0);
         int rightSum = max(find(node->right), 0);
         maxVal = max(node->val + leftSum + rightSum, maxVal);
