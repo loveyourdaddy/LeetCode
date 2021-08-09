@@ -13,7 +13,7 @@ public:
         int leftSum = max(find(node->left), 0);
         int rightSum = max(find(node->right), 0);
         maxVal = max(node->val + leftSum + rightSum, maxVal);
-	return max(leftSum, rightSum) + node->val;
+		return max(leftSum, rightSum) + node->val;
     }
 };
 int main() {
