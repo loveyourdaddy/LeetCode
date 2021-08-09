@@ -39,7 +39,7 @@ public:
         }
         
         // 모든 방문이 끝났다면 더이상 체크하지 않음으로 표시 
-        visited[i] = 2;
+        visited[i] = 2; 
         return false;
     }
 };
