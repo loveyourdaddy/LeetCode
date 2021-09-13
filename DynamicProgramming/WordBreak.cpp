@@ -50,3 +50,32 @@ public:
 	}
 };
 */
+
+
+class Solution {
+public:
+    bool wordBreak(string s, vector<string>& wordDict) {
+
+        unordered_set<string> words(wordDict.begin(), wordDict.end());
+        int n = s.size();
+        vector<int> dp(n + 1, 0);
+        dp[0] = 1;
+        for (int i = 1; i <= n; ++i) {
+            for (int j = i - 1; j >= 0; --j) {
+                if (dp[j]) {
+                    auto tmp1 = s.substr(j, i - j);
+                    auto tmp2 = words.count(s.substr(j, i - j));
+
+                    cout << "tmp:" << tmp1 << endl;
+                    cout << "tmp:" << tmp2 << endl;
+                    if (words.count(s.substr(j, i - j))) {
+                        dp[i] = 1;
+                        break;
+                    }
+                }
+            }
+        }
+
+        return dp[n];
+	}
+};
